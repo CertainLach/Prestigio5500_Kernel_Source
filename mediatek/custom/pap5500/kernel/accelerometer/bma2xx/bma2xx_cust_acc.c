@@ -11,16 +11,16 @@ int bma222e250e_cust_acc_power(struct acc_hw *hw, unsigned int on, char* devname
         return hwPowerDown(hw->power_id, devname); 
 }
 /*---------------------------------------------------------------------------*/
-static struct acc_hw bma222e250e_cust_acc_hw = {
+static struct acc_hw bma2xx_cust_acc_hw = {
     .i2c_num = 1,
-    .direction = 5,			//Ivan original = 6 
+    .direction = 6,			//from IDA = 6; was 5 //Ivan original = 6 
     .power_id = MT65XX_POWER_NONE,  /*!< LDO is not used */
     .power_vol= VOL_DEFAULT,        /*!< LDO is not used */
     .firlen = 1,                   /*!< don't enable low pass fileter */
     .power = bma222e250e_cust_acc_power,
 };
 /*---------------------------------------------------------------------------*/
-struct acc_hw* bma222e250e_get_cust_acc_hw(void) 
+struct acc_hw* get_cust_acc_hw(void) 
 {
-    return &bma222e250e_cust_acc_hw;
+    return &bma2xx_cust_acc_hw;
 }
